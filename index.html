@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <!-- Bootstrap CSS -->
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous"
+        />
+
+        <link rel="stylesheet" href="styles/styles.css" />
+        <title>Check List</title>
+        <style>
+            body {
+                margin: 25px
+                font-family: Helvetica, Arial
+                padding: 10px
+                }
+            .header {
+                    padding: 30px;
+                    text-align: center;
+            }
+            .box {
+                padding: 10px;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Check List</h1>
+        </div>
+        <div class="box"></div>
+            <table id="checkList" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                    <!-- will replace "#" by status, and change to a toggle button-->
+                      <th scope="col">#</th>
+                      <th scope="col">Task</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>
+                        <!-- Enter Task -->
+                      </td>
+                      <td>
+                        <!-- Enter Description -->
+                      </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Add Activity</p>
+            <input id="taskName" type="text" value="" placeholder="Enter Task" />
+            <input id="description" type="text" value="" placeholder="Enter Description" />
+            <button onclick="addActivity()">Add Activity</button>
+                <script>
+                    // get the inputs
+                    const taskName = document.getElementByID("taskName");
+                    const description = document.getElementByID("description");
+                    // add Activity onto the list when it is clicked
+                    function addActivity() {
+                        // grab the value of the inputs
+                        const newTask = document.getElementByID("taskName").value;
+                        const newDescription = document.getElementByID("description").value;
+                        // add into the Check List
+                        document.getElementByID("")
+                    }
+                </script>
+        </div>
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"
+      ></script>
+  
+      <script src="scripts/addActivity.js"></script>
+    </body>
