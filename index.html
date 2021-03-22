@@ -39,14 +39,17 @@
                 <thead>
                     <tr>
                     <!-- will replace "#" by status, and change to a toggle button-->
-                      <th scope="col">#</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Task</th>
                       <th scope="col">Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                      <th scope="row">1</th>
+                      <th scope="row">
+                        <!-- Checkbox to tick completion -->
+                            <input type="checkbox" id="completed" name="check" value="completed" checked>
+                        </th>
                       <td>
                         <!-- Enter Task -->
                       </td>
@@ -69,7 +72,7 @@
                         // grab the value of the inputs
                         const newTask = document.getElementByID("taskName").value;
                         const newDescription = document.getElementByID("description").value;
-                        // add into the Check List
+                        // add into the Check List (append?)
                         document.getElementByID("")
                     }
                 </script>
