@@ -14,27 +14,14 @@
 
         <link rel="stylesheet" href="styles/styles.css" />
         <title>Check List</title>
-        <style>
-            body {
-                margin: 25px
-                font-family: Helvetica, Arial
-                padding: 10px
-                }
-            .header {
-                    padding: 30px;
-                    text-align: center;
-            }
-            .box {
-                padding: 10px;
-                margin-top: 5px;
-            }
-        </style>
     </head>
     <body>
+        <!-- Title of the Page -->
         <div class="header">
             <h1>Check List</h1>
         </div>
-        <div class="box"></div>
+        <!-- Create a table, and styling it -->
+        <div class="tablebox">
             <table id="checkList" class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -45,43 +32,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                      <th scope="row">
-                        <!-- Checkbox to tick completion -->
-                            <input type="checkbox" id="completed" name="check" value="completed" checked>
-                        </th>
-                      <td>
-                        <!-- Enter Task -->
-                      </td>
-                      <td>
-                        <!-- Enter Description -->
-                      </td>
-                    </tr>
                 </tbody>
             </table>
-            <p>Add Activity</p>
-            <input id="taskName" type="text" value="" placeholder="Enter Task" />
-            <input id="description" type="text" value="" placeholder="Enter Description" />
-            <button onclick="addActivity()">Add Activity</button>
-                <script>
-                    // get the inputs
-                    const taskName = document.getElementByID("taskName");
-                    const description = document.getElementByID("description");
-                    // add Activity onto the list when it is clicked
-                    function addActivity() {
-                        // grab the value of the inputs
-                        const newTask = document.getElementByID("taskName").value;
-                        const newDescription = document.getElementByID("description").value;
-                        // add into the Check List (append?)
-                        document.getElementByID("")
-                    }
-                </script>
         </div>
+        <!-- Create an interface for user input to add in their tasks, and the description of it -->
+        <div class="userbox">
+        <h4>Add Activity</h4>
+        <input id="TASK" type="text" value="" placeholder="Enter Task" />
+        <input id="DESCRIPTION" type="text" value="" placeholder="Enter Description" />
+        <!-- Clicking the button "Add Activity" will perform the function "addActivity" written in the scripts -->
+        <button onclick="addActivity()">Add Activity</button>
+        </div>
+        <!-- website styling copied and pasted -->
         <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"
       ></script>
-  
+        
+      <!-- Scripts are written in the addActivity javascript file -->
       <script src="scripts/addActivity.js"></script>
     </body>

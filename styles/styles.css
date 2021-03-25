@@ -1,4 +1,25 @@
-.heading {
-  padding: 36px 0px;
+/* The default style of the body */
+body {
+  margin: 25px
+  font-family: Helvetica, Arial
+  padding: 10px
+  }
+/* Title of the Page */
+.header {
+  padding: 30px;
   text-align: center;
+}
+/* Style for the table */
+.tablebox {
+  padding: 25px;
+  text-align: center;
+}
+/* Style for the User Interface */
+.userbox {
+  padding: 25px;
+}
+/* Style for when the activity is completed */
+.completed {
+  color: linen;
+  text-decoration: line-through;
 }
