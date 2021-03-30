@@ -15,7 +15,7 @@
         //     return `<div class='completed></div>`
         // }
     }
-    // Anchoring the checkbox when adding new activities by updating the list
+    // Updating the isComplete state of the item (checked vs unchecked)
     function clickedCheckBox(index) {
         activity[index].isComplete = !activity[index].isComplete;
     }
@@ -30,7 +30,7 @@
         let tbodyRef = table.getElementsByTagName('tbody')[0];
         // reset table
         tbodyRef.innerHTML = "";
-        //search each activity from the list, and then add it accordingly to the row
+        //Go through each activity, and recreate each items on the list row by row
         activity.forEach((item, index) => {
             const row = tbodyRef.insertRow(index);
             let innerHTML = "";
