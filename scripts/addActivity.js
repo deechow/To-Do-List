@@ -31,6 +31,14 @@
         // reset table
         tbodyRef.innerHTML = "";
         //Go through each activity, and recreate each items on the list row by row
+        // savedActivity.forEach((item, index) => {
+        //     const row = tbodyRef.insertRow(index);
+        //     let innerHTML = "";
+        //     innerHTML += `<th scope='row'>${drawCheckBox(item, index)}</th>`;
+        //     innerHTML += `<td>${item.task}</td>`;
+        //     innerHTML += `<td>${item.description}</td>`;
+        //     row.innerHTML = innerHTML;
+        // });
         activity.forEach((item, index) => {
             const row = tbodyRef.insertRow(index);
             let innerHTML = "";
@@ -52,3 +60,13 @@
     }
     // Create the table at start
     drawTable();
+
+    //Utilizes a local storage
+    //Set the activity list into local storage
+    localStorage.setItem("activity", JSON.stringify(activity));
+    //Store them as strings
+    document.getElementById("savedActivity").innerHTML = localStorage.getItem("activity");
+    //Store the task. This is actually just looking for objects
+    // document.getElementById("TASK").innerHTML = JSON.parse(localStorage.getItem("activity"));
+    // // //Store the description. This is just actually looking for objects as well.
+    // document.getElementById("DESCRIPTION").innerHTML = JSON.parse(localStorage.getItem("activity"));

@@ -12,7 +12,7 @@ body {
 /* Style for the table */
 .tablebox {
   padding: 25px;
-  text-align: center;
+  text-align: left;
 }
 /* Style for the User Interface */
 .userbox {
