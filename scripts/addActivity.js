@@ -1,72 +1,83 @@
-    // Add your activity to this list
-    let activity = [];
-    // Find the table to interact with
-    const table = document.getElementById("checkList");
+    // Create a list to store the activities
+    let activity = []; 
+
+    // HTML elements
+    const tableElement = document.getElementById("checkList");
+    const tableElementTBodyRef = tableElement.getElementsByTagName('tbody')[0];
+    const taskElement = document.getElementById("TASK")
+    const descriptionElement = document.getElementById("DESCRIPTION")
+
     // Creating a checkbox
-    function drawCheckBox(item, index) {
-        let checked = ""
-        if (item.isComplete) {
-          checked = "checked";
+    function createCheckBox(item, index) {
+        const checkBox = document.createElement("input");
+        checkBox.setAttribute("type", "checkbox");
+        checkBox.checked = item.isComplete;
+
+        checkBox.onclick = () => {
+            clickedCheckBox(index);
         }
-        // Inserting the checkbox with its asigned index to differienate new ones, creating it with clickedCheckBox function in mind
-        // Create checkbox, name the id with the index, and updating the checked status in the list
-        return `<input type='checkbox' id=${`check-${index}`} ${checked} onclick="clickedCheckBox(${index})"></input>`;
-        // if activity[index].isComplete = 'checked' {
-        //     return `<div class='completed></div>`
-        // }
+
+        return checkBox;
     }
+
     // Updating the isComplete state of the item (checked vs unchecked)
     function clickedCheckBox(index) {
         activity[index].isComplete = !activity[index].isComplete;
+        updateLocalStorage();
     }
-    // add a feature to change the style for completed task
-    // function checkedCheckBox(index) {
-    //     if activity[index].isComplete = 'checked' {
-    //         innerHTML += `<div class='completed></div>`
-    //     }
-    // }
+
     // Creating the table. It creates a new table each time, deleting the old one
     function drawTable() {
-        let tbodyRef = table.getElementsByTagName('tbody')[0];
         // reset table
-        tbodyRef.innerHTML = "";
+        tableElementTBodyRef.innerHTML = "";
+    
         //Go through each activity, and recreate each items on the list row by row
-        // savedActivity.forEach((item, index) => {
-        //     const row = tbodyRef.insertRow(index);
-        //     let innerHTML = "";
-        //     innerHTML += `<th scope='row'>${drawCheckBox(item, index)}</th>`;
-        //     innerHTML += `<td>${item.task}</td>`;
-        //     innerHTML += `<td>${item.description}</td>`;
-        //     row.innerHTML = innerHTML;
-        // });
         activity.forEach((item, index) => {
-            const row = tbodyRef.insertRow(index);
-            let innerHTML = "";
-            innerHTML += `<th scope='row'>${drawCheckBox(item, index)}</th>`;
-            innerHTML += `<td>${item.task}</td>`;
-            innerHTML += `<td>${item.description}</td>`;
-            row.innerHTML = innerHTML;
+            const row = tableElementTBodyRef.insertRow(index);
+            const tableHeader = document.createElement("th");
+            const checkBox = createCheckBox(item, index);
+            tableHeader.scope = "row";
+            tableHeader.appendChild(checkBox);
+            row.appendChild(tableHeader)
+
+            const taskDataColumn = document.createElement("td")
+            taskDataColumn.innerHTML = item.task
+            row.appendChild(taskDataColumn)
+
+            const taskDescriptionColumn = document.createElement("td")
+            taskDescriptionColumn.innerHTML = item.description
+            row.appendChild(taskDescriptionColumn)
         });
     }
   
     // add Activity onto the list when it is clicked
     function addActivity() {
         // grab the value of the inputs
-        const task = document.getElementById("TASK").value;
-        const description = document.getElementById("DESCRIPTION").value;
+        const task = taskElement.value;
+        const description = descriptionElement.value;
         activity.push({ isComplete: false, task: task, description: description })
+        updateLocalStorage();
         // Create the new table
         drawTable();
     }
-    // Create the table at start
-    drawTable();
 
-    //Utilizes a local storage
-    //Set the activity list into local storage
-    localStorage.setItem("activity", JSON.stringify(activity));
-    //Store them as strings
-    document.getElementById("savedActivity").innerHTML = localStorage.getItem("activity");
-    //Store the task. This is actually just looking for objects
-    // document.getElementById("TASK").innerHTML = JSON.parse(localStorage.getItem("activity"));
-    // // //Store the description. This is just actually looking for objects as well.
-    // document.getElementById("DESCRIPTION").innerHTML = JSON.parse(localStorage.getItem("activity"));
+    // Update the local storage with updated data
+    function updateLocalStorage() {
+        localStorage.setItem("activity", JSON.stringify(activity));
+    }
+
+    // Sets up the project
+    function init() {
+        // Grab from local storage, and parse the JSON string
+        const localStorageActivity = JSON.parse(localStorage.getItem("activity"));
+        // If it exist, we update activity
+        if (localStorageActivity !== null) {
+            activity = localStorageActivity;
+        }
+
+        // Draw first instance of table
+        drawTable();
+    }
+
+
+    init();
